@@ -3,10 +3,17 @@
   <head>
     <title>Redirecting...</title>
     <script>
-      window.location.replace("https://tinyurl.com/15supersecretlink");
+      window.onload = function () {
+        const params = new URLSearchParams(window.location.search);
+        const link = params.get('link');
+        if (link) {
+          const fullUrl = link.startsWith('http') ? link : 'https://' + link;
+          window.location.href = fullUrl;
+        }
+      };
     </script>
   </head>
   <body>
-    <p>Redirecting...</p>
+    Redirecting...
   </body>
 </html>
